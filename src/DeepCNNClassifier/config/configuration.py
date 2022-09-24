@@ -1,6 +1,7 @@
 from DeepCNNClassifier.constants import *
 from DeepCNNClassifier.utils import read_yaml, create_directories
 from DeepCNNClassifier.entity import DataIngestionConfig
+from DeepCNNClassifier import logger
 
 class ConfigurationManager:
     def __init__(
@@ -22,5 +23,5 @@ class ConfigurationManager:
             local_data_file=config.local_data_file,
             unzip_dir=config.unzip_dir 
         )
-
+        logger.info(f"Data Ingestion Config is completed: {data_ingestion_config}")
         return data_ingestion_config

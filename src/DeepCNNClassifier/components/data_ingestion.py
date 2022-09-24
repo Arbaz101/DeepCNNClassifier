@@ -1,3 +1,4 @@
+from asyncio.log import logger
 import os
 import urllib.request as request
 from zipfile import ZipFile
@@ -13,6 +14,9 @@ class DataIngestion:
                 url = self.config.source_URL,
                 filename = self.config.local_data_file
             )
+            logger.info(f"Dataset downloaded to directory:{self.config.local_data_file}")
+        else:
+            logger.info(f"Dataset already downloaded!!")
 
     def _get_updated_list_of_files(self, list_of_files):
         return [f for f in list_of_files if f.endswith(".jpg") and ("Cat" in f or "Dog" in f)]
@@ -31,3 +35,4 @@ class DataIngestion:
             updated_list_of_files = self._get_updated_list_of_files(list_of_files)
             for f in updated_list_of_files:
                 self._preprocess(zf, f, self.config.unzip_dir)
+            logger.info(f"Unzip and cleaning is completed")

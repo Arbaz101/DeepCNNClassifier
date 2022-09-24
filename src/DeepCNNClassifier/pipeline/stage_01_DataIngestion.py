@@ -13,6 +13,8 @@ def main():
 
 if __name__ == '__main__':
     try:
+        logger.info("\n\n")
+        logger.info("\n\n")
         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
         main()
         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
