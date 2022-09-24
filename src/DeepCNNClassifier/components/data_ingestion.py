@@ -3,6 +3,7 @@ import os
 import urllib.request as request
 from zipfile import ZipFile
 from DeepCNNClassifier.entity import DataIngestionConfig
+from tqdm import tqdm
 
 class DataIngestion:
     def __init__(self, config: DataIngestionConfig):
@@ -33,6 +34,6 @@ class DataIngestion:
         with ZipFile(file=self.config.local_data_file, mode="r") as zf:
             list_of_files = zf.namelist()
             updated_list_of_files = self._get_updated_list_of_files(list_of_files)
-            for f in updated_list_of_files:
+            for f in tqdm(updated_list_of_files):
                 self._preprocess(zf, f, self.config.unzip_dir)
             logger.info(f"Unzip and cleaning is completed")
