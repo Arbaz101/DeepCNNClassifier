@@ -1,4 +1,1 @@
-from DeepCNNClassifier.entity.entity import (
-    DataIngestionConfig, 
-    PrepareBaseModelConfig
-    )
+from DeepCNNClassifier.entity.entity import DataIngestionConfig, PrepareBaseModelConfig
